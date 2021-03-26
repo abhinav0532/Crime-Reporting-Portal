@@ -75,7 +75,7 @@ app.get("/contact", function(req, res){
 });
 
 app.get("/login", function(req, res){
-  res.render("contact", {contactContent: contactContent});
+  res.render("login");
 });
 
 app.listen(3000, function() {

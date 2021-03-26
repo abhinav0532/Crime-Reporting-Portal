@@ -22,7 +22,7 @@ const postSchema = {
   title: String,
   content: String
 };
-// this is just for try
+
 const Post = mongoose.model("Post", postSchema);
 
 app.get("/", function(req, res){

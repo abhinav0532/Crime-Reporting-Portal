@@ -42,14 +42,17 @@ h4 {
   margin-bottom: 0;
   font-size: 12px;
   letter-spacing: 5px;
-  color: black;
+  color: white;
   font-weight: bolder;
 }
 
 .navbar-nav li a:hover {
-  color: red !important;
+  color: black !important;
   font-weight: bold;
+}
 
+.navbar-default .navbar-nav>li>a {
+    color: white;
 }
 
 .footer-padding {

@@ -1,14 +1,40 @@
+
+
 html {
   min-height: 100%;
   position: relative;
 }
+p{
+  font-size: 2.0rem;
+  margin:10px;
+}
+h1 {
+  font-family: "Montserrat-Black";
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+
+h5 {
+  font-family: "Montserrat-Bold";
+  font-size: 2.0rem;
+  line-height: 1.5;
+}
+
+h4 {
+  font-family: "Montserrat-Bold";
+  font-size: 2.5rem;
+  font-size: 2.5rem;
+}
+
 
 .container-fluid {
   padding-top: 70px;
   padding-bottom: 70px;
 }
 
+
 .navbar {
+  background-color: #1abc9c;
   padding-top: 15px;
   padding-bottom: 15px;
   border: 0;
@@ -16,10 +42,14 @@ html {
   margin-bottom: 0;
   font-size: 12px;
   letter-spacing: 5px;
+  color: black;
+  font-weight: bolder;
 }
 
 .navbar-nav li a:hover {
-  color: #1abc9c !important;
+  color: red !important;
+  font-weight: bold;
+
 }
 
 .footer-padding {
@@ -38,7 +68,7 @@ html {
 .footer p {
   margin-top: 25px;
   font-size: 12px;
-  color: #fff;
+  color: red;
 }
 
 .happening {

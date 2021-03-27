@@ -23,6 +23,7 @@ The following project is a rough implementation of a Cyber Crime Portal where us
 Sometimes the Logout feature doesn't work effectively.
 
 ## Tech Stack Used
+![https://upload.wikimedia.org/wikipedia/commons/9/94/MERN-logo.png]
 
 - HTML
 - CSS
@@ -35,7 +36,7 @@ Sometimes the Logout feature doesn't work effectively.
 - Google API
 
 ##  Website Link   
-    http://intense-ocean-84800.herokuapp.com/
+    [http://intense-ocean-84800.herokuapp.com/](http://intense-ocean-84800.herokuapp.com/)
     
 
 

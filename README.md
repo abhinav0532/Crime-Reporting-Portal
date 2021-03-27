@@ -23,7 +23,7 @@ The following project is a rough implementation of a Cyber Crime Portal where us
 Sometimes the Logout feature doesn't work effectively.
 
 ## Tech Stack Used
-![https://upload.wikimedia.org/wikipedia/commons/9/94/MERN-logo.png]
+![MERN-logo](https://user-images.githubusercontent.com/62372310/112726018-2d43db00-8f41-11eb-8d7d-4afa9affe3e0.png)
 
 - HTML
 - CSS

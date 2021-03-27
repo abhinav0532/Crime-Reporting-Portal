@@ -26,19 +26,19 @@ p{
   margin:10px;
 }
 h1 {
-  font-family: "Montserrat-Black";
+  font-family: 'Montserrat', sans-serif;
   font-size: 3.5rem;
   line-height: 1.5;
 }
 
 h5 {
-  font-family: "Montserrat-Bold";
+  font-family: 'Montserrat', sans-serif;
   font-size: 2.0rem;
   line-height: 1.5;
 }
 
 h4 {
-  font-family: "Montserrat-Bold";
+  font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
   font-size: 2.5rem;
 }
@@ -84,6 +84,7 @@ h4 {
   height: 60px;
   background-color: #1abc9c;
 }
+
 
 .footer p {
   margin-top: 25px;

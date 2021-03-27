@@ -270,6 +270,13 @@ app.get("/contact", function(req, res) {
   }
 });
 
+app.get("/video", function(req, res) {
+  if (req.isAuthenticated()) {
+    res.render("video");
+  } else {
+    res.redirect("/login");
+  }
+});
 
 
 

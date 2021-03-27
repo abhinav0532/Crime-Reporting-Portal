@@ -31,10 +31,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://admin:admin123@cluster0.b1sv9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/blogDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://admin:admin123@cluster0.b1sv9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/blogDB", {
+  useNewUrlParser: true
+});
 // mongoose.set("useCreateIndex", true);
 
-const userSchema = new mongoose.Schema ({
+const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   googleId: String,
@@ -61,43 +63,53 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/secrets",
+    callbackURL: "/auth/google/secrets",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log(profile);
 
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    User.findOrCreate({
+      googleId: profile.id
+    }, function(err, user) {
       return cb(err, user);
     });
   }
 ));
 
-app.get("/", function(req, res){
+app.get("/", function(req, res) {
   res.render("home_secret");
 });
 
 app.get("/auth/google",
-  passport.authenticate('google', { scope: ["profile"] })
+  passport.authenticate('google', {
+    scope: ["profile"]
+  })
 );
 
 app.get("/auth/google/secrets",
-  passport.authenticate('google', { failureRedirect: "/login" }),
+  passport.authenticate('google', {
+    failureRedirect: "/login"
+  }),
   function(req, res) {
     // Successful authentication, redirect to secrets.
     res.redirect("/secrets");
   });
 
-app.get("/login", function(req, res){
+app.get("/login", function(req, res) {
   res.render("login");
 });
 
-app.get("/register", function(req, res){
+app.get("/register", function(req, res) {
   res.render("register");
 });
 
-app.get("/secrets", function(req, res){
-  res.redirect("/home_portal");
+app.get("/secrets", function(req, res) {
+  if (req.isAuthenticated()) {
+    res.redirect("/home_portal");
+  } else {
+    res.redirect("/login");
+  }
   // User.find({"secret": {$ne: null}}, function(err, foundUsers){
   //   if (err){
   //     console.log(err);
@@ -109,27 +121,27 @@ app.get("/secrets", function(req, res){
   // });
 });
 
-app.get("/submit", function(req, res){
-  if (req.isAuthenticated()){
+app.get("/submit", function(req, res) {
+  if (req.isAuthenticated()) {
     res.render("submit");
   } else {
     res.redirect("/login");
   }
 });
 
-app.post("/submit", function(req, res){
+app.post("/submit", function(req, res) {
   const submittedSecret = req.body.secret;
 
-//Once the user is authenticated and their session gets saved, their user details are saved to req.user.
+  //Once the user is authenticated and their session gets saved, their user details are saved to req.user.
   // console.log(req.user.id);
 
-  User.findById(req.user.id, function(err, foundUser){
+  User.findById(req.user.id, function(err, foundUser) {
     if (err) {
       console.log(err);
     } else {
       if (foundUser) {
         foundUser.secret = submittedSecret;
-        foundUser.save(function(){
+        foundUser.save(function() {
           res.redirect("/secrets");
         });
       }
@@ -137,19 +149,21 @@ app.post("/submit", function(req, res){
   });
 });
 
-app.get("/logout", function(req, res){
+app.get("/logout", function(req, res) {
   req.logout();
   res.redirect("/");
 });
 
-app.post("/register", function(req, res){
+app.post("/register", function(req, res) {
 
-  User.register({username: req.body.username}, req.body.password, function(err, user){
+  User.register({
+    username: req.body.username
+  }, req.body.password, function(err, user) {
     if (err) {
       console.log(err);
       res.redirect("/register");
     } else {
-      passport.authenticate("local")(req, res, function(){
+      passport.authenticate("local")(req, res, function() {
         res.redirect("/secrets");
       });
     }
@@ -157,18 +171,18 @@ app.post("/register", function(req, res){
 
 });
 
-app.post("/login", function(req, res){
+app.post("/login", function(req, res) {
 
   const user = new User({
     username: req.body.username,
     password: req.body.password
   });
 
-  req.login(user, function(err){
+  req.login(user, function(err) {
     if (err) {
       console.log(err);
     } else {
-      passport.authenticate("local")(req, res, function(){
+      passport.authenticate("local")(req, res, function() {
         res.redirect("/secrets");
       });
     }
@@ -184,42 +198,50 @@ const postSchema = {
 
 const Post = mongoose.model("Post", postSchema);
 
-app.get("/home_portal", function(req, res){
-
-  Post.find({}, function(err, posts){
-    res.render("home_portal", {
-      startingContent: homeStartingContent,
-      posts: posts
+app.get("/home_portal", function(req, res) {
+  if (req.isAuthenticated()) {
+    Post.find({}, function(err, posts) {
+      res.render("home_portal", {
+        startingContent: homeStartingContent,
+        posts: posts
       });
-  });
+    });
+  } else {
+    res.redirect("/login");
+  }
 });
 
-app.get("/compose", function(req, res){
-  res.render("compose");
+app.get("/compose", function(req, res) {
+  if (req.isAuthenticated()) {
+    res.render("compose");
+  } else {
+    res.redirect("/login");
+  }
 });
 
-app.post("/compose", function(req, res){
+app.post("/compose", function(req, res) {
   const post = new Post({
     title: req.body.postTitle,
     content: req.body.postBody
   });
 
 
-  post.save(function(err){
-    if (!err){
-        res.redirect("/");
-    }
-    else{
+  post.save(function(err) {
+    if (!err) {
+      res.redirect("/");
+    } else {
       res.redirect("/home_portal");
     }
   });
 });
 
-app.get("/posts/:postId", function(req, res){
+app.get("/posts/:postId", function(req, res) {
 
-const requestedPostId = req.params.postId;
+  const requestedPostId = req.params.postId;
 
-  Post.findOne({_id: requestedPostId}, function(err, post){
+  Post.findOne({
+    _id: requestedPostId
+  }, function(err, post) {
     res.render("post", {
       title: post.title,
       content: post.content
@@ -228,12 +250,24 @@ const requestedPostId = req.params.postId;
 
 });
 
-app.get("/about", function(req, res){
-  res.render("about", {aboutContent: aboutContent});
+app.get("/about", function(req, res) {
+  if (req.isAuthenticated()) {
+    res.render("about", {
+      aboutContent: aboutContent
+    });
+  } else {
+    res.redirect("/login");
+  }
 });
 
-app.get("/contact", function(req, res){
-  res.render("contact", {contactContent: contactContent});
+app.get("/contact", function(req, res) {
+  if (req.isAuthenticated()) {
+    res.render("contact", {
+      contactContent: contactContent
+    });
+  } else {
+    res.redirect("/login");
+  }
 });
 
 

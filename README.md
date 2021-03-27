@@ -1,6 +1,6 @@
 # Cyber Crime Portal
 
-The following project is a rough implementation of a Cyber Crime Portal where users can log in and Report/View cyber crimes.
+The following project is a rough implementation of a Cyber Crime Portal where users can log in and Report/View all the recent Cyber Crimes reported by other users.
 
 ## Features
 

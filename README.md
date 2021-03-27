@@ -36,8 +36,7 @@ Sometimes the Logout feature doesn't work effectively.
 - Google API
 
 ##  Website Link   
-    [http://intense-ocean-84800.herokuapp.com/](http://intense-ocean-84800.herokuapp.com/)
-    
+    [http://intense-ocean-84800.herokuapp.com/]    
 
 
 ## License

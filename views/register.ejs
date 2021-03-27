@@ -4,6 +4,11 @@
 <head>
   <meta charset="utf-8">
   <title>Register</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Ubuntu&display=swap" rel="stylesheet">
+
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="css/bootstrap-social.css">
@@ -13,7 +18,7 @@
 <body>
 
 <div class="container mt-5">
-  <h1>Register</h1>
+  <h1 id="regis">Register</h1>
 
   <div class="row">
     <div class="col-sm-8">
@@ -21,16 +26,16 @@
         <div class="card-body">
 
           <!-- Makes POST request to /register route -->
-          <form action="/register" method="POST">
+          <form action="/register"  method="POST">
             <div class="form-group">
-              <label for="email">Email</label>
+              <label for="email" class="ema_pass">Email</label>
               <input type="email" class="form-control" name="username">
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
+              <label for="password" class="ema_pass">Password</label>
               <input type="password" class="form-control" name="password">
             </div>
-            <button type="submit" class="btn btn-dark">Register</button>
+            <button type="submit" class="btn btn-dark btn-outline-success">Register</button>
           </form>
 
         </div>
@@ -45,7 +50,7 @@
             Sign Up with Google
           </a>
         </div>
-    
+
       </div>
     </div>
 
@@ -56,4 +61,3 @@
 
 </body>
 </html>
-

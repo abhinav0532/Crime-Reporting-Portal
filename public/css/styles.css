@@ -15,8 +15,20 @@ body {
   background-color: #000;
 }
 
+#login_heading{
+  font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    line-height: 1.3;
+    color: #28527a;
+    font-weight: bold;
+}
 
+.ema_pass{
+  font-family: monospace;
+  font-weight:bold;
+  font-size: 1.5rem;
 
+}
 html {
   min-height: 100%;
   position: relative;

@@ -21,7 +21,7 @@
 
 
 <div class="container mt-5">
-  <h1>Login</h1>
+  <h1 id="login_heading">Login</h1>
 
   <div class="row">
     <div class="col-sm-8">
@@ -31,11 +31,11 @@
           <!-- Makes POST request to /login route -->
           <form action="/login" method="POST">
             <div class="form-group">
-              <label for="email">Email</label>
+              <label for="email" class="ema_pass">Email</label>
               <input type="email" class="form-control" name="username">
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
+              <label for="password" class="ema_pass">Password</label>
               <input type="password" class="form-control" name="password">
             </div>
             <button type="submit" class="btn btn-dark">Login</button>

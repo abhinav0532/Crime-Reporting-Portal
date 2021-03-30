@@ -39,6 +39,18 @@ Sometimes the Logout feature doesn't work effectively.
 ##  Website Link   
 [http://intense-ocean-84800.herokuapp.com/](http://intense-ocean-84800.herokuapp.com/)
 
+## Edit
+> According to Google OAuth 2.0 Policies
+
+For the purposes of these requirements, a "production" app meets the following criteria:
+
+- It isn't for personal use. An app is considered to be for personal use if it's not shared with anyone else or will be used by fewer than 100 people (all of whom are known personally to you).
+- It isn't used for development, testing, or staging.
+- It isn't for internal use; that is, restricted to people in your Google Workspace or Cloud Identity organization.
+
+> Since our website comes under personal use right now, Google OAuth 2.0
+> doesn't work for everyone except for the people whose email ids are registered 
+> within the API.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

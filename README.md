@@ -37,7 +37,7 @@ Sometimes the Logout feature doesn't work effectively.
 - Google API
 
 ##  Website Link   
-[http://intense-ocean-84800.herokuapp.com/](http://intense-ocean-84800.herokuapp.com/)
+[https://crime-reporting-portal.herokuapp.com/](https://crime-reporting-portal.herokuapp.com/)
 
 ## Edit
 > According to Google OAuth 2.0 Policies

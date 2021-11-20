@@ -51,6 +51,6 @@ For the purposes of these requirements, a "production" app meets the following c
 > Since our website comes under personal use right now, Google OAuth 2.0
 > doesn't work for everyone except for the people whose email ids are registered 
 > within the API.
-
+<!-- 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/) -->
